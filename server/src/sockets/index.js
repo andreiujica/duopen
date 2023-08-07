@@ -1,7 +1,6 @@
-const logger = require('../utils/logger');
-const onConnect = require('./socketEvents/onConnect');
-const onCodeChange = require('./socketEvents/onCodeChange');
-const onDisconnect = require('./socketEvents/onDisconnect');
+const onConnect = require('./events/onConnect');
+const onCodeChange = require('./events/onCodeChange');
+const onDisconnect = require('./events/onDisconnect');
 
 module.exports = (io) => {
     io.on('connection', (socket) => {

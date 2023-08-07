@@ -1,4 +1,4 @@
-const logger = require('../../utils/logger');
+const logger = require('../../config/logger');
 
 function onCodeChange(socket) {
     socket.on('code-change', (data) => {

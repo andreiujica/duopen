@@ -9,14 +9,20 @@ const setupWebsockets = require('./sockets');
 let server;
 
 const httpServer = http.createServer(app);
-const io = socketIo(httpServer);
+const io = socketIo(httpServer, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+    },
+    }
+  );
 
 // Set up the websockets with socket.io instance
 setupWebsockets(io);
 
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
-  server = app.listen(config.port, () => {
+  server = httpServer.listen(config.port, () => {
     logger.info(`Listening to port ${config.port}`);
   });
 });
