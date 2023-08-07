@@ -4,7 +4,8 @@
   "description": "The server for the duopen app that allows for real-time communication between two users.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +15,13 @@
     "url": "https://github.com/andreiujica/duopen.git"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
     "jest": "^29.6.2",
-    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "supertest": "^6.3.3"
   }
 }
