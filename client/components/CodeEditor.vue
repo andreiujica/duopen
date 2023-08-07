@@ -3,9 +3,13 @@ textarea(v-model="code" @input="onCodeChange")
 </template>
 
 <script>
-import io from 'socket.io-client'
-
 export default {
+  props: {
+    roomCode: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       socket: null,
@@ -13,16 +17,13 @@ export default {
     }
   },
   mounted() {
-    this.socket = io('http://localhost:8000') // Point to your server address
-
-    this.socket.on('code-update', (updatedCode) => {
+    this.$socket.on('code-update', (updatedCode) => {
       this.code = updatedCode
     })
   },
   methods: {
     onCodeChange() {
-      console.log('onCodeChange triggered, emitting send-code')
-      this.socket.emit('code-change', this.code)
+      this.$socket.emit('code-change', this.code)
     },
   },
 }
