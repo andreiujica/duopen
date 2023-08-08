@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     onCodeChange() {
-      this.$socket.emit('code-change', this.code)
+      this.$socket.emit('code-change', { room: this.roomCode, code: this.code })
     },
   },
 }

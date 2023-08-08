@@ -8,7 +8,7 @@ function onJoinRoom(socket, io) {
             logger.info(`User joined room ${roomCode}`);
           callback(true); // Successfully joined room
         } else {
-            logger.
+            logger.info(`User failed to join room ${roomCode}`);
           callback(false); // Room does not exist
         }
       });
