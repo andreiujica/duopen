@@ -4,6 +4,7 @@ const onDisconnect = require('./events/onDisconnect');
 const onCreateRoom = require('./events/onCreateRoom');
 const onJoinRoom = require('./events/onJoinRoom');
 const onLeaveRoom = require('./events/onLeaveRoom');
+const onGetUsersInRoom = require('./events/onGetUsersInRoom');
 
 module.exports = (io) => {
     io.on('connection', (socket) => {
@@ -13,5 +14,6 @@ module.exports = (io) => {
         onCreateRoom(socket);
         onJoinRoom(socket, io);
         onLeaveRoom(socket);
+        onGetUsersInRoom(socket, io);
     });
 };

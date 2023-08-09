@@ -12,28 +12,24 @@ c-box(d="flex" flexDirection="column" flex="1" p="5" bg="gray.900")
       c-box
         c-text(fontWeight="bold" mb="3" color="white") Participants
         c-stack(spacing="2")
-          c-box(v-for="user in participants" :key="user.id") {{ user.name }}
+          c-box(v-for="user in usersInRoom" :key="user") 
+            c-text(color="white" fontSize="sm") {{ user }}
       c-button(variantColor="red" mt="4" @click="leaveTheRoom") Leave Room
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'RoomPage',
-  data() {
-    return {
-      participants: [
-        { id: '1', name: 'John' },
-        { id: '2', name: 'Jane' },
-      ],
-    }
+  computed: {
+    ...mapGetters('room', ['usersInRoom']),
   },
   methods: {
     async leaveTheRoom() {
       try {
         await this.$store.dispatch('room/leaveRoom', this.$route.params.code)
-        this.$router.push('/app/rooms/').catch((err) => {
-          console.error('Router push error:', err)
-        })
+        this.$router.push('/app/rooms/')
       } catch (error) {
         console.error('Error leaving room:', error.message)
       }

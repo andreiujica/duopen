@@ -1,5 +1,5 @@
 const state = () => ({
-    activeLink: 'dashboard' // default active link
+    activeLink: '/app/' // default active link
 });
   
 const mutations = {

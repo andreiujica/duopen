@@ -20,11 +20,6 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    this.$socket.on('code-update', (updatedCode) => {
-      this.code = updatedCode
-    })
-  },
   data() {
     return {
       code: 'console.log("Hello, Nuxt and Vue 2!")',
@@ -35,6 +30,11 @@ export default {
       },
     }
   },
+  mounted() {
+    this.$socket.on('code-update', (updatedCode) => {
+      this.code = updatedCode
+    })
+  },
   methods: {
     onCmCodeChange(newCode) {
       this.code = newCode
@@ -43,3 +43,11 @@ export default {
   },
 }
 </script>
+
+<style>
+/* stylelint-disable */
+.vue-codemirror .CodeMirror {
+  height: 90vh;
+}
+/* stylelint-enable */
+</style>
