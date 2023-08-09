@@ -9,28 +9,28 @@ describe('LayoutHeader.vue', () => {
       wrapper = shallowMount(LayoutHeader, {
         mocks: {
           $route: {
-            path: '/example/path/to/resource'
-          }
-        }
+            path: '/example/path/to/resource',
+          },
+        },
       })
 
       const expectedBreadcrumbs = [
         {
           label: 'Example',
-          path: '/example'
+          path: '/example',
         },
         {
           label: 'Path',
-          path: '/example/path'
+          path: '/example/path',
         },
         {
           label: 'To',
-          path: '/example/path/to'
+          path: '/example/path/to',
         },
         {
           label: 'Resource',
-          path: '/example/path/to/resource'
-        }
+          path: '/example/path/to/resource',
+        },
       ]
 
       expect(wrapper.vm.computedBreadcrumbs).toEqual(expectedBreadcrumbs)
@@ -40,9 +40,9 @@ describe('LayoutHeader.vue', () => {
       wrapper = shallowMount(LayoutHeader, {
         mocks: {
           $route: {
-            path: '/'
-          }
-        }
+            path: '/',
+          },
+        },
       })
 
       expect(wrapper.vm.computedBreadcrumbs).toEqual([])

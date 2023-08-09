@@ -40,19 +40,16 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@chakra-ui/nuxt',
-    '@nuxtjs/emotion',
-  ],
+  modules: ['@chakra-ui/nuxt', '@nuxtjs/emotion'],
 
   chakra: {
     icons: {
       iconPack: 'fa',
       iconSet: {
         faHouse,
-        faFileCode
-      }
-    }
+        faFileCode,
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
