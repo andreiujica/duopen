@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "\n🔎 Running Server fixes..."
+cd "$(dirname "$0")/../server"
+
+echo "\n🔎 Running Prettier..."
+npm run prettier:fix
+
+echo "\n🔎 Running ESLint..."
+npm run lint:fix
+
+echo "\n🔎 Running Client Fixes..."
+
+cd "../client"
+
+echo "\n🔎 Running Prettier..."
+npm run lintfix
+
+exit 0
+

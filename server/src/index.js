@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const http = require('http');
+const socketIo = require('socket.io');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
-const http = require('http'); 
-const socketIo = require('socket.io'); 
 const setupWebsockets = require('./sockets');
 
 let server;
@@ -13,9 +13,8 @@ const io = socketIo(httpServer, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST'],
-    },
-    }
-  );
+  },
+});
 
 // Set up the websockets with socket.io instance
 setupWebsockets(io);

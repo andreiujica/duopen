@@ -7,13 +7,13 @@ const onLeaveRoom = require('./events/onLeaveRoom');
 const onGetUsersInRoom = require('./events/onGetUsersInRoom');
 
 module.exports = (io) => {
-    io.on('connection', (socket) => {
-        onConnect(socket);
-        onCodeChange(socket);
-        onDisconnect(socket);
-        onCreateRoom(socket);
-        onJoinRoom(socket, io);
-        onLeaveRoom(socket);
-        onGetUsersInRoom(socket, io);
-    });
+  io.on('connection', (socket) => {
+    onConnect(socket);
+    onCodeChange(socket);
+    onDisconnect(socket);
+    onCreateRoom(socket);
+    onJoinRoom(socket, io);
+    onLeaveRoom(socket);
+    onGetUsersInRoom(socket, io);
+  });
 };
