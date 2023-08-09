@@ -23,6 +23,7 @@ export default {
   plugins: [
     { src: '~plugins/socket.js', ssr: false },
     { src: '@/plugins/vue-codemirror', ssr: false },
+    { src: '@/plugins/chakra-ui', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

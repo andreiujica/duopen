@@ -18,7 +18,9 @@ export default {
   name: 'LayoutHeader',
   computed: {
     computedBreadcrumbs() {
-      const pathArray = this.$route.path.split('/').filter((n) => n)
+      const path = this.$route && this.$route.path ? this.$route.path : ''
+
+      const pathArray = path.split('/').filter((n) => n)
 
       const breadcrumbs = pathArray.map((path, index) => {
         return {

@@ -23,17 +23,10 @@ c-box(width="70px" height="100vh" bg="black")
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { CBox, CImage, CStack, CPseudoBox } from '@chakra-ui/vue'
 import { sidebarLinks } from '../../constants/sidebarLinks'
 
 export default {
   name: 'LayoutSidebar',
-  components: {
-    CBox,
-    CImage,
-    CStack,
-    CPseudoBox,
-  },
   data() {
     return {
       links: sidebarLinks,
