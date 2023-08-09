@@ -21,7 +21,11 @@ c-box(d="flex" flexDirection="column" flex="1" p="5" bg="gray.900")
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'RoomPage',
+  head() {
+    return {
+      title: 'Live Room - DuoPen',
+    }
+  },
   computed: {
     ...mapGetters('room', ['usersInRoom']),
   },

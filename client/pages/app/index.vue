@@ -6,10 +6,14 @@ p lalala
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'DashboardPage',
   data() {
     return {
       roomCode: undefined,
+    }
+  },
+  head() {
+    return {
+      title: 'Dashboard - DuoPen',
     }
   },
   methods: {

@@ -3,7 +3,7 @@ import { faHouse, faFileCode } from '@fortawesome/free-solid-svg-icons'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'duopen-client',
+    title: 'DuoPen',
     htmlAttrs: {
       lang: 'en',
     },

@@ -11,10 +11,14 @@ c-box(d="flex" flexDirection="column" alignItems="center" justifyContent="center
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'RoomsPage',
   data() {
     return {
       roomCode: '',
+    }
+  },
+  head() {
+    return {
+      title: 'Rooms - DuoPen',
     }
   },
   methods: {
