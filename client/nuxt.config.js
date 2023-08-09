@@ -1,3 +1,5 @@
+import { faHouse, faFileCode } from '@fortawesome/free-solid-svg-icons'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -18,7 +20,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~plugins/socket.js', ssr: false }],
+  plugins: [
+    { src: '~plugins/socket.js', ssr: false },
+    { src: '@/plugins/vue-codemirror', ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -34,7 +39,20 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@chakra-ui/nuxt',
+    '@nuxtjs/emotion',
+  ],
+
+  chakra: {
+    icons: {
+      iconPack: 'fa',
+      iconSet: {
+        faHouse,
+        faFileCode
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

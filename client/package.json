@@ -15,12 +15,20 @@
     "test": "jest"
   },
   "dependencies": {
+    "@chakra-ui/nuxt": "^0.7.1",
+    "@codemirror/lang-javascript": "^6.1.9",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@nuxtjs/emotion": "0.1.0",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "socket.io-client": "^4.7.2",
     "vue": "^2.7.10",
+    "vue-codemirror": "4",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
   },
