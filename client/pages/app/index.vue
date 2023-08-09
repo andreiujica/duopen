@@ -6,7 +6,7 @@ p lalala
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'IndexPage',
+  name: 'DashboardPage',
   data() {
     return {
       roomCode: undefined,
