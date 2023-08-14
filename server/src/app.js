@@ -1,67 +1,38 @@
-const express = require('express');
-const helmet = require('helmet');
-const xss = require('xss-clean');
-const mongoSanitize = require('express-mongo-sanitize');
-const compression = require('compression');
+const http = require('http');
 const cors = require('cors');
-const passport = require('passport');
-const httpStatus = require('http-status');
-const config = require('./config/config');
-const morgan = require('./config/morgan');
-const { jwtStrategy } = require('./config/passport');
-const { authLimiter } = require('./middlewares/rateLimiter');
-const routes = require('./routes/v1');
-const { errorConverter, errorHandler } = require('./middlewares/error');
-const ApiError = require('./utils/ApiError');
+const express = require('express');
+const socketIo = require('socket.io');
+const logger = require('./utils/logger');
+const errorHandler = require('./middleware/errorHandler');
+const config = require('./config/index');
+
+const chatEvents = require('./events/chatEvents');
+const codeEvents = require('./events/codeEvents');
+const whiteboardEvents = require('./events/whiteboardEvents');
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
-if (config.env !== 'test') {
-  app.use(morgan.successHandler);
-  app.use(morgan.errorHandler);
-}
+io.on('connection', (socket) => {
+    logger.info('New user connected');
 
-// set security HTTP headers
-app.use(helmet());
+    // Initialize events for this socket connection
+    chatEvents(socket, io);
+    codeEvents(socket, io);
+    whiteboardEvents(socket, io);
 
-// parse json request body
-app.use(express.json());
-
-// parse urlencoded request body
-app.use(express.urlencoded({ extended: true }));
-
-// sanitize request data
-app.use(xss());
-app.use(mongoSanitize());
-
-// gzip compression
-app.use(compression());
-
-// enable cors
-app.use(cors());
-app.options('*', cors());
-
-// jwt authentication
-app.use(passport.initialize());
-passport.use('jwt', jwtStrategy);
-
-// limit repeated failed requests to auth endpoints
-if (config.env === 'production') {
-  app.use('/v1/auth', authLimiter);
-}
-
-// v1 api routes
-app.use('/v1', routes);
-
-// send back a 404 error for any unknown api request
-app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+    socket.on('disconnect', () => {
+        logger.info('User disconnected');
+    });
 });
 
-// convert error to ApiError, if needed
-app.use(errorConverter);
-
-// handle error
+// Middleware for error handling
 app.use(errorHandler);
 
-module.exports = app;
+// Middleware for CORS
+app.use(cors());
+
+server.listen(config.PORT, () => {
+    logger.info(`Server is running on port ${config.PORT}`);
+});
