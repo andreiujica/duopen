@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="p-4 btn btn-primary">John</button>
+    <UButton>Button</UButton>
     <NuxtWelcome />
   </div>
 </template>
