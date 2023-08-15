@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen flex flex-row justify-between items-center h-16 border-b px-4"
+    class="w-full flex flex-row justify-between items-center h-16 border-b px-4"
   >
     <Logo />
     <div class="flex flex-row items-center">
