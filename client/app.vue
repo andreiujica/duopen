@@ -1,6 +1,15 @@
+<script setup>
+const { duopen } = useAppConfig();
+
+useHead({
+  title: duopen.name,
+  titleTemplate: `%s - ${duopen.name}`,
+});
+</script>
+
 <template>
-  <div>
-    <UButton>Button</UButton>
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <NuxtLoadingIndicator />
+    <NuxtPage />
+  </NuxtLayout>
 </template>
