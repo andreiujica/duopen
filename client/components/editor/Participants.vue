@@ -1,7 +1,7 @@
 <template>
   <UCard
     :ui="{
-      base: 'h-full w-96 shadow-md flex flex-col',
+      base: 'h-full w-96 flex flex-col border border-gray-200 dark:border-gray-700',
       body: {
         base: 'grow',
       },

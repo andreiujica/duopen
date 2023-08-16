@@ -21,7 +21,8 @@
 import { defineComponent, ref, shallowRef } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
-import { oneDark } from "@codemirror/theme-one-dark";
+import darkDuopen from "~/themes/darkDuopen";
+import lightDuopen from "~/themes/lightDuopen";
 
 export default defineComponent({
   components: {
@@ -32,7 +33,20 @@ export default defineComponent({
 
     const code = ref(`console.log('Hello, world!')`);
 
-    const extensions = [javascript(), oneDark];
+    const extensions = ref([javascript()]); // Initialize with just the language
+
+    // Compute the theme based on colorMode
+    const currentTheme = computed(() => {
+      return colorMode.value === "dark" ? darkDuopen : lightDuopen;
+    });
+
+    // Watch for changes to colorMode and update the extensions array
+    watch(colorMode, (newColorMode) => {
+      extensions.value = [javascript(), currentTheme.value];
+    });
+
+    // Initially set the theme
+    extensions.value = [javascript(), currentTheme.value];
 
     // Codemirror EditorView instance ref
     const view = shallowRef();
