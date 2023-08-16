@@ -1,4 +1,7 @@
 <script setup>
+const userStore = useUserStore();
+const router = useRouter();
+
 const state = ref({
   username: undefined,
   color: undefined,
@@ -21,13 +24,13 @@ const validate = (state) => {
 
 const form = ref();
 
-async function submit() {
-  await form.value?.validate();
-  if (form.value?.isValid) {
-    const { username, color } = state.value;
-    await $store.dispatch("user/setUser", { username, color });
-    $router.push({ name: "code" });
-  }
+function submit() {
+  const isValid = form.value?.validate();
+  if (!isValid) return;
+
+  const { username, color } = state.value;
+  userStore.setUser(username, color);
+  router.push({ path: "/editor" });
 }
 </script>
 
@@ -51,13 +54,7 @@ async function submit() {
     </h3>
 
     <div class="flex flex-row w-full">
-      <UForm
-        ref="form"
-        :validate="validate"
-        :state="state"
-        @submit.prevent="submit"
-        class="w-2/3"
-      >
+      <UForm ref="form" :validate="validate" :state="state" class="w-2/3">
         <UFormGroup label="Username" name="username" class="mb-4">
           <UInput v-model="state.username" />
         </UFormGroup>
@@ -87,6 +84,7 @@ async function submit() {
         </h3>
       </div>
     </div>
-    <UButton type="submit" block> Start </UButton>
+
+    <UButton type="submit" block @click="submit"> Start </UButton>
   </UCard>
 </template>

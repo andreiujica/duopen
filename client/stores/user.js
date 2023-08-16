@@ -6,6 +6,7 @@ export const useUserStore = defineStore({
     username: null,
     avatarColor: null
   }),
+  persist: true,
   actions: {
     setUser(username, avatarColor) {
       this.username = username;

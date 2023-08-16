@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+  middleware: "auth",
+});
+</script>
+
 <template>
   <div class="flex flex-col w-screen h-screen bg-white dark:bg-gray-900">
     <TopNavbar />

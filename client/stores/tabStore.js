@@ -6,7 +6,6 @@ export const useTabStore = defineStore({
   state: () => ({
     currentTab: "Code Editor",
   }),
-
   actions: {
     setCurrentTab(tabLabel) {
       this.currentTab = tabLabel;
