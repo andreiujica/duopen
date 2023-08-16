@@ -21,6 +21,8 @@
 import { defineComponent, ref, shallowRef } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
+import { html } from "@codemirror/lang-html";
+import { css } from "@codemirror/lang-css";
 import darkDuopen from "~/themes/darkDuopen";
 import lightDuopen from "~/themes/lightDuopen";
 
@@ -28,25 +30,35 @@ export default defineComponent({
   components: {
     Codemirror,
   },
-  setup() {
+  props: {
+    lang: {
+      type: String,
+      default: "html",
+      validator(value) {
+        // The value must match one of these strings
+        return ["html", "css", "js"].includes(value);
+      },
+    },
+  },
+  setup(props) {
     const colorMode = useColorMode();
-
     const code = ref(`console.log('Hello, world!')`);
 
-    const extensions = ref([javascript()]); // Initialize with just the language
+    const extensions = computed(() => {
+      const baseExtensions =
+        colorMode.value === "dark" ? [darkDuopen] : [lightDuopen];
 
-    // Compute the theme based on colorMode
-    const currentTheme = computed(() => {
-      return colorMode.value === "dark" ? darkDuopen : lightDuopen;
+      switch (props.lang) {
+        case "js":
+          return [...baseExtensions, javascript()];
+        case "html":
+          return [...baseExtensions, html()];
+        case "css":
+          return [...baseExtensions, css()];
+        default:
+          return baseExtensions;
+      }
     });
-
-    // Watch for changes to colorMode and update the extensions array
-    watch(colorMode, (newColorMode) => {
-      extensions.value = [javascript(), currentTheme.value];
-    });
-
-    // Initially set the theme
-    extensions.value = [javascript(), currentTheme.value];
 
     // Codemirror EditorView instance ref
     const view = shallowRef();

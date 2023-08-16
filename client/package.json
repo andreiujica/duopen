@@ -23,7 +23,6 @@
     "@codemirror/lang-css": "^6.2.1",
     "@codemirror/lang-html": "^6.4.5",
     "@codemirror/lang-javascript": "^6.1.9",
-    "@codemirror/theme-one-dark": "^6.1.2",
     "@pinia/nuxt": "^0.4.11",
     "pinia": "^2.1.6"
   }
