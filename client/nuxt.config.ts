@@ -3,6 +3,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxthq/ui',
-    '@pinia/nuxt',
-  ]
+    ['@pinia/nuxt', 
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
+      }
+    ],
+  ],
+  imports: {
+    dirs: [ 'stores' ],
+  },
 })
