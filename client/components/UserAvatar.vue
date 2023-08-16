@@ -36,6 +36,10 @@ const colorClass = computed(() => {
 const sizeClass = computed(() => {
   return `w-${props.size} h-${props.size}`;
 });
+
+const textClass = computed(() => {
+  return props.size >= 16 ? "text-base" : "text-sm";
+});
 </script>
 
 <template>
@@ -43,6 +47,6 @@ const sizeClass = computed(() => {
     class="rounded-full flex items-center justify-center"
     :class="[colorClass, sizeClass]"
   >
-    <span class="text-white font-semibold">{{ initials }}</span>
+    <span :class="['font-semibold', textClass]">{{ initials }}</span>
   </div>
 </template>

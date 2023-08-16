@@ -7,10 +7,19 @@ export const useUserStore = defineStore({
     avatarColor: null
   }),
   persist: true,
+  getters: {
+    getUserIsLoggedIn() {
+      return this.username && this.avatarColor;
+    }
+  },
   actions: {
     setUser(username, avatarColor) {
       this.username = username;
       this.avatarColor = avatarColor;
+    },
+    clearUser() {
+      this.username = null;
+      this.avatarColor = null;
     }
   }
 });
