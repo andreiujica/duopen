@@ -6,5 +6,8 @@ definePageMeta({
 </script>
 
 <template>
-  <h2>Editor</h2>
+  <div class="flex flex-row w-full h-full">
+    <EditorMain class="w-[calc(100vw-24rem)] h-full" />
+    <EditorParticipants class="w-96 h-full" />
+  </div>
 </template>

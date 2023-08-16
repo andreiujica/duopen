@@ -32,7 +32,7 @@ const items = [
     <UserAvatar
       :username="userStore.username"
       :color="userStore.avatarColor"
-      size="8"
+      :size="8"
     />
 
     <template #account="{ item }">
