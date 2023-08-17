@@ -1,4 +1,6 @@
 <script setup>
+const { $io } = useNuxtApp();
+
 const items = [
   {
     key: "html",
@@ -24,9 +26,9 @@ definePageMeta({
   <div class="flex flex-row w-full h-full">
     <UTabs :items="items" class="w-[calc(100vw-24rem)] h-full">
       <template #item="{ item }">
-        <EditorMain class="w-full h-full" :lang="item.key" />
+        <EditorMain v-if="$io" class="w-full h-full" :lang="item.key" />
       </template>
     </UTabs>
-    <EditorParticipants class="w-96 h-full" />
+    <EditorParticipants v-if="$io" class="w-96 h-full" />
   </div>
 </template>

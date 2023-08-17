@@ -1,6 +1,6 @@
 <template>
   <codemirror
-    v-model="code"
+    v-model="text"
     placeholder="Code goes here..."
     :style="{
       height: '100%',
@@ -11,8 +11,7 @@
     :tab-size="2"
     :extensions="extensions"
     @ready="handleReady"
-    @change="log('change', $event)"
-    @focus="log('focus', $event)"
+    @change="handleCodeChange"
     @blur="log('blur', $event)"
   />
 </template>
@@ -43,6 +42,45 @@ export default defineComponent({
   setup(props) {
     const colorMode = useColorMode();
     const code = ref(`console.log('Hello, world!')`);
+
+    const roomsStore = useRoomsStore();
+    const codeStore = useCodeStore();
+
+    const { $io } = useNuxtApp();
+
+    const text = computed({
+      get() {
+        switch (props.lang) {
+          case "js":
+            return codeStore.getJsCode;
+          case "html":
+            return codeStore.getHtmlCode;
+          case "css":
+            return codeStore.getCssCode;
+          default:
+            return codeStore.getHtmlCode;
+        }
+      },
+      set(newValue) {
+        code.value = newValue;
+        codeStore.setCode(newValue, props.lang);
+      },
+    });
+
+    $io.on("codeChanged", ({ code, lang }) => {
+      console.log("Socket ID:", $io.id);
+      if (lang === props.lang) {
+        codeStore.setCode(code, lang);
+      }
+    });
+
+    const handleCodeChange = (newCode) => {
+      $io.emit("codeUpdate", {
+        room: roomsStore.getCurrentRoom,
+        code: newCode,
+        lang: props.lang,
+      });
+    };
 
     const extensions = computed(() => {
       const baseExtensions =
@@ -86,6 +124,8 @@ export default defineComponent({
       extensions,
       handleReady,
       log: console.log,
+      handleCodeChange,
+      text,
     };
   },
 });

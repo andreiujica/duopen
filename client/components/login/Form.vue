@@ -30,7 +30,7 @@ function submit() {
 
   const { username, color } = state.value;
   userStore.setUser(username, color);
-  router.push({ path: "/editor" });
+  router.push({ path: "/join-room" });
 }
 </script>
 
