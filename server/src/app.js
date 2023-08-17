@@ -12,7 +12,12 @@ const whiteboardEvents = require('./events/whiteboardEvents');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: config.cors.origin,
+        methods: config.cors.methods
+    }
+});
 
 io.on('connection', (socket) => {
     logger.info('New user connected');
@@ -31,7 +36,7 @@ io.on('connection', (socket) => {
 app.use(errorHandler);
 
 // Middleware for CORS
-app.use(cors());
+app.use(cors(config.cors));
 
 server.listen(config.PORT, () => {
     logger.info(`Server is running on port ${config.PORT}`);

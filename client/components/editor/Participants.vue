@@ -1,3 +1,13 @@
+<script setup>
+const roomsStore = useRoomsStore();
+const router = useRouter();
+
+const leaveRoom = () => {
+  roomsStore.leaveRoom();
+  router.push({ path: "/join-room" });
+};
+</script>
+
 <template>
   <UCard
     :ui="{

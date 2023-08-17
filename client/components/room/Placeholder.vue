@@ -2,6 +2,19 @@
 const state = reactive({
   roomId: "",
 });
+
+const roomsStore = useRoomsStore();
+const router = useRouter();
+
+const createRoom = () => {
+  roomsStore.createRoom();
+  router.push({ path: "/editor" });
+};
+
+const joinRoom = (roomId) => {
+  roomsStore.joinRoom(roomId);
+  router.push({ path: "/editor" });
+};
 </script>
 
 <template>
@@ -30,7 +43,7 @@ const state = reactive({
           Craft your own space, inviting others to join in for a shared
           experience.
         </h3>
-        <UButton color="green" block @click="leaveRoom" class="w-52 md:w-80">
+        <UButton color="green" block @click="createRoom" class="w-52 md:w-80">
           {{ "Create Room" }}
         </UButton>
       </div>
@@ -51,7 +64,7 @@ const state = reactive({
             placeholder="Room ID"
             class="w-32 md:w-52"
           />
-          <UButton color="blue" @click="leaveRoom">
+          <UButton color="blue" @click="joinRoom(state.roomId)">
             {{ "Join Room" }}
           </UButton>
         </div>

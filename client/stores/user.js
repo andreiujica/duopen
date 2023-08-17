@@ -10,6 +10,12 @@ export const useUserStore = defineStore({
   getters: {
     getUserIsLoggedIn() {
       return this.username && this.avatarColor;
+    },
+    getUser() {
+      return {
+        username: this.username,
+        avatarColor: this.avatarColor
+      };
     }
   },
   actions: {
