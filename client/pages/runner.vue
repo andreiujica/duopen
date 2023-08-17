@@ -6,5 +6,5 @@ definePageMeta({
 </script>
 
 <template>
-  <h2>Runner</h2>
+  <RunnerPreview class="w-full h-full" />
 </template>
