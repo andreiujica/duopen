@@ -4,16 +4,31 @@ const state = reactive({
 });
 
 const roomsStore = useRoomsStore();
+const userStore = useUserStore();
+
 const router = useRouter();
+const { $io } = useNuxtApp();
 
 const createRoom = () => {
-  roomsStore.createRoom();
-  router.push({ path: "/editor" });
+  $io.emit("createRoom", { user: userStore.getUser }, (roomCode) => {
+    roomsStore.joinRoom(roomCode);
+    router.push({ path: "/editor" });
+  });
 };
 
-const joinRoom = (roomId) => {
-  roomsStore.joinRoom(roomId);
-  router.push({ path: "/editor" });
+const joinRoom = (roomCode) => {
+  $io.emit("joinRoom", { roomCode, user: userStore.getUser }, (success) => {
+    if (success) {
+      roomsStore.joinRoom(roomCode);
+      $io.emit("fetchUsersInRoom", { roomCode }, (users) => {
+        console.log(users);
+        roomsStore.setParticipants(users);
+      });
+      router.push({ path: "/editor" });
+    } else {
+      console.error(response.message);
+    }
+  });
 };
 </script>
 

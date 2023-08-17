@@ -23,6 +23,7 @@
     "@codemirror/lang-html": "^6.4.5",
     "@codemirror/lang-javascript": "^6.1.9",
     "@pinia/nuxt": "^0.4.11",
-    "pinia": "^2.1.6"
+    "pinia": "^2.1.6",
+    "socket.io-client": "^4.7.2"
   }
 }

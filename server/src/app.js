@@ -9,6 +9,7 @@ const config = require('./config/index');
 const chatEvents = require('./events/chatEvents');
 const codeEvents = require('./events/codeEvents');
 const whiteboardEvents = require('./events/whiteboardEvents');
+const roomEvents = require('./events/roomEvents');
 
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +27,7 @@ io.on('connection', (socket) => {
     chatEvents(socket, io);
     codeEvents(socket, io);
     whiteboardEvents(socket, io);
+    roomEvents(socket, io);
 
     socket.on('disconnect', () => {
         logger.info('User disconnected');
