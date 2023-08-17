@@ -2,6 +2,7 @@
 // Composables
 const roomsStore = useRoomsStore();
 const userStore = useUserStore();
+const codeStore = useCodeStore();
 const router = useRouter();
 const { $io } = useNuxtApp();
 
@@ -27,6 +28,7 @@ const leaveRoom = () => {
     user: userStore.getUser,
   });
   roomsStore.leaveRoom();
+  codeStore.clearCode();
   router.push({ path: "/join-room" });
 };
 </script>

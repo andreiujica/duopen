@@ -25,6 +25,12 @@ export const useCodeStore = defineStore({
     setCode(code, lang) {
       this.code[lang] = code;
     },
-    
+    clearCode() {
+      this.code = {
+        html: "",
+        css: "",
+        js: ""
+      };
+    }
   }
 });
