@@ -29,6 +29,6 @@ definePageMeta({
         <EditorMain v-if="$io" class="w-full h-full" :lang="item.key" />
       </template>
     </UTabs>
-    <EditorParticipants v-if="$io" class="w-96 h-full" />
+    <Chat v-if="$io" class="w-96 h-full" />
   </div>
 </template>
