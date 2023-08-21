@@ -19,11 +19,6 @@ const tabs = [
     route: "/runner",
   },
   {
-    label: "Chat",
-    icon: "i-heroicons-chat-bubble-left-solid",
-    route: "/chat",
-  },
-  {
     label: "Whiteboard",
     icon: "i-heroicons-paint-brush-solid",
     route: "/whiteboard",
