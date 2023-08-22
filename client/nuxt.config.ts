@@ -18,12 +18,14 @@ export default defineNuxtConfig({
       socketUrl: process.env.SOCKET_URL || 'http://localhost:8000',
     },
   },
-  generate: {
-    exclude: [
-      /^\/runner/,
-      /^\/join-room/,
-      /^\/whiteboard/,
-      /^\/editor/
-    ]
-  },
+  nitro: {
+    prerender: {
+      ignore: [
+        '/editor',
+        '/runner',
+        '/join-room',
+        '/whiteboard',
+      ]
+    }
+  }
 })
