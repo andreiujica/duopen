@@ -17,7 +17,7 @@ services:
     region: frankfurt
     plan: free
     rootDir: client
-    buildCommand: yarn install && yarn run generate
+    buildCommand: yarn install --production=false && yarn run generate
     startCommand: yarn run start
     envVars:
       - key: NODE_ENV
