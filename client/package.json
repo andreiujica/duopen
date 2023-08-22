@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxthq/ui": "^2.7.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
+    "@types/node": "^18.17.3",
+    "codemirror": "^6.0.1",
+    "nuxt": "^3.6.5",
+    "thememirror": "^2.0.1",
+    "vue-codemirror": "^6.1.1"
+  },
+  "dependencies": {
+    "@codemirror/lang-css": "^6.2.1",
+    "@codemirror/lang-html": "^6.4.5",
+    "@codemirror/lang-javascript": "^6.1.9",
+    "@pinia/nuxt": "^0.4.11",
+    "pinia": "^2.1.6",
+    "socket.io-client": "^4.7.2"
+  }
+}
