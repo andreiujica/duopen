@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: duopen-server
+    runtime: node
+    region: frankfurt
+    plan: free
+    rootDir: server
+    buildCommand: yarn install
+    startCommand: yarn start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: duopen-client
+    runtime: node
+    region: frankfurt
+    plan: free
+    rootDir: client
+    buildCommand: yarn install && yarn run generate
+    startCommand: yarn run start
+    envVars:
+      - key: NODE_ENV
+        value: production
