@@ -6,7 +6,7 @@ const { duopen } = useAppConfig();
   <UButton
     :to="duopen.project.links.github"
     target="_blank"
-    icon="i-heroicons-square-2-stack-solid"
+    icon="i-mdi-github"
     color="gray"
     variant="ghost"
   />
