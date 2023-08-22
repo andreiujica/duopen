@@ -13,4 +13,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: [ 'stores' ],
   },
+  runtimeConfig: {
+    public: {
+      socketUrl: process.env.SOCKET_URL || 'http://localhost:8000',
+    },
+  },
 })
