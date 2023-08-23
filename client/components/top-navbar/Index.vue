@@ -15,7 +15,7 @@ const isIndexPage = computed(() => router.currentRoute.value.path === "/");
       <TopNavbarGithubButton />
       <TopNavbarUserMenu v-if="userStore.getUserIsLoggedIn" class="ml-16" />
       <UButton v-else-if="isIndexPage" to="/login" class="ml-16">
-        Dive in
+        Try Duopen Now
       </UButton>
     </div>
   </div>
