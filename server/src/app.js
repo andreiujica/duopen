@@ -41,5 +41,5 @@ app.use(errorHandler);
 app.use(cors(config.cors));
 
 server.listen(config.PORT, () => {
-    logger.info(`Server is running on port ${config.PORT}`);
+    logger.info(`Server is running on port ${config.PORT} with CORS_ORIGIN ${config.cors.origin}`);
 });
