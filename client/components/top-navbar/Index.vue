@@ -10,7 +10,7 @@ const userStore = useUserStore();
     <div class="flex flex-row items-center space-x-1">
       <TopNavbarColorModeButton />
       <TopNavbarGithubButton />
-      <TopNavbarUserMenu v-if="userStore.getUserIsLoggedIn" />
+      <TopNavbarUserMenu v-if="userStore.getUserIsLoggedIn" class="ml-16" />
     </div>
   </div>
 </template>

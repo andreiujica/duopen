@@ -27,5 +27,8 @@ export default defineNuxtConfig({
         '/whiteboard',
       ]
     }
+  },
+  ui: {
+    icons: ['mdi', 'heroicons', 'tabler']
   }
 })
