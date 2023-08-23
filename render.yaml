@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: duopen
+    name: duopen-server
     runtime: node
     region: frankfurt
     plan: free
@@ -12,7 +12,7 @@ services:
         value: production
 
   - type: web
-    name: duopen-client
+    name: duopen
     runtime: node
     region: frankfurt
     plan: free
