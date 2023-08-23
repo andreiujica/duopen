@@ -31,7 +31,7 @@ const currentHeroScreenshot = computed(() => {
     </UButton>
     <ClientOnly>
       <img
-        src="images/random-pixels.jpg"
+        src="/images/random-pixels.jpg"
         alt="Duopen App Screenshot"
         class="mt-4 w-11/12 sm:w-5/6 sm:shadow-2xl dark:shadow-gray-200 rounded-xl border border-gray-200 dark:border-gray-700"
       />
