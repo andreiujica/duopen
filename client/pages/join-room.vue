@@ -1,4 +1,8 @@
 <script setup>
+useSeoMeta({
+  title: "Rooms",
+});
+
 definePageMeta({
   layout: "dashboard",
   middleware: "auth",

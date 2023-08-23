@@ -1,4 +1,8 @@
 <script setup>
+useSeoMeta({
+  title: "Login",
+});
+
 definePageMeta({
   middleware: "auth",
 });

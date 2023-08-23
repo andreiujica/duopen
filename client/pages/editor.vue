@@ -15,6 +15,9 @@ const items = [
     label: "JS",
   },
 ];
+useSeoMeta({
+  title: "Editor",
+});
 
 definePageMeta({
   layout: "dashboard",
