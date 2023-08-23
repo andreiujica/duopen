@@ -23,10 +23,12 @@ const currentHeroScreenshot = computed(() => {
         <UIcon name="i-heroicons-arrow-right-20-solid" />
       </template>
     </UButton>
-    <img
-      :src="currentHeroScreenshot"
-      alt="Duopen App Screenshot"
-      class="w-5/6 shadow-2xl dark:shadow-gray-200 rounded-xl mt-8 border border-gray-200 dark:border-gray-700"
-    />
+    <ClientOnly>
+      <img
+        :src="currentHeroScreenshot"
+        alt="Duopen App Screenshot"
+        class="w-5/6 shadow-2xl dark:shadow-gray-200 rounded-xl mt-8 border border-gray-200 dark:border-gray-700"
+      />
+    </ClientOnly>
   </div>
 </template>
