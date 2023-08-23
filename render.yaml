@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: duopen-server
+    name: duopen
     runtime: node
     region: frankfurt
     plan: free
