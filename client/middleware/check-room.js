@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (process.server && process.static) return;
 
     // Check if username or avatarColor is undefined or null
-    if (!roomsStore.getCurrentRoom()) {
+    if (!roomsStore.getCurrentRoom) {
         // Redirect to join-room or any other desired page
         if (to.path !== '/join-room') {
             return navigateTo('/join-room');
