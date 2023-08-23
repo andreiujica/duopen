@@ -59,7 +59,10 @@ const contents = [
                 : 'text-center sm:text-left sm:ml-8'
             "
           >
-            <UIcon :name="content.icon" class="w-8 h-8 mx-auto sm:mx-0" />
+            <UIcon
+              :name="content.icon"
+              class="w-8 h-8 mx-auto sm:mx-0 bg-primary-400"
+            />
             <div class="font-semibold text-lg mt-2">{{ content.title }}</div>
             <div class="font-light mt-2 sm:mt-4">
               {{ content.description }}

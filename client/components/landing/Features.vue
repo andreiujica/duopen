@@ -68,7 +68,10 @@ const contents = [
     class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 w-11/12 sm:w-4/5 lg:w-3/4 divide-x divide-y divide-gray-200 dark:divide-gray-600 rounded-lg border border-gray-200 dark:border-gray-700"
   >
     <div v-for="content in contents" class="p-2 sm:p-4">
-      <UIcon :name="content.icon" class="w-6 sm:w-8 h-6 sm:h-8" />
+      <UIcon
+        :name="content.icon"
+        class="w-6 sm:w-8 h-6 sm:h-8 bg-primary-400"
+      />
       <div class="mt-2 text-xs sm:text-sm font-semibold">
         {{ content.title }}
       </div>
