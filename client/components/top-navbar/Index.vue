@@ -1,5 +1,8 @@
 <script setup>
 const userStore = useUserStore();
+
+const router = useRouter();
+const isIndexPage = computed(() => router.currentRoute.value.path === "/");
 </script>
 
 <template>
@@ -11,6 +14,9 @@ const userStore = useUserStore();
       <TopNavbarColorModeButton />
       <TopNavbarGithubButton />
       <TopNavbarUserMenu v-if="userStore.getUserIsLoggedIn" class="ml-16" />
+      <UButton v-else-if="isIndexPage" to="/login" class="ml-16">
+        Dive in
+      </UButton>
     </div>
   </div>
 </template>
