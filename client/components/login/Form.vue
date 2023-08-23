@@ -15,6 +15,12 @@ const colorOptions = [
   { label: "Purple", color: "purple" },
 ];
 
+const userIsOnMobile = computed(() => {
+  const { isMobile } = useDevice();
+  console.log(isMobile);
+  return isMobile === true;
+});
+
 const validate = (state) => {
   const errors = [];
   if (!state.username) errors.push({ path: "username", message: "Required" });
@@ -36,6 +42,29 @@ function submit() {
 
 <template>
   <UCard
+    v-if="userIsOnMobile"
+    :ui="{
+      base: 'mx-8',
+    }"
+  >
+    <template #header>
+      <h2 class="font-semibold text-lg leading-tight">
+        {{ "Sorry!" }}
+      </h2>
+    </template>
+
+    <h3
+      class="w-full text-sm font-light mb-4 text-slate-600 dark:text-slate-400"
+    >
+      Duopen is not available on mobile devices yet. Please try again on a
+      desktop or laptop.
+    </h3>
+
+    <UButton to="/" block> Go Back </UButton>
+  </UCard>
+
+  <UCard
+    v-else
     :ui="{
       base: 'w-2/5 shadow-md',
     }"

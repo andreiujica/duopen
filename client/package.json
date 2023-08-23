@@ -17,6 +17,7 @@
     "@iconify-json/tabler": "^1.1.89",
     "@nuxt/devtools": "latest",
     "@nuxthq/ui": "^2.7.0",
+    "@nuxtjs/device": "^3.1.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@types/node": "^18.17.3",
     "codemirror": "^6.0.1",
