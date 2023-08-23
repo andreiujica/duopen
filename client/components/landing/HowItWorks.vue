@@ -32,32 +32,36 @@ const contents = [
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-3/4">
-    <div class="text-4xl font-bold text-center mb-8 mt-32">
+  <div class="flex flex-col items-center w-full sm:w-3/4 lg:w-2/3">
+    <div class="text-3xl sm:text-4xl font-bold text-center mb-8 mt-16 sm:mt-32">
       How does it work?
     </div>
-    <div class="relative m-10">
+    <div class="relative mx-4 sm:m-10">
       <!-- Vertical Line -->
-      <div class="absolute left-1/2 h-full border-l-2 border-gray-300"></div>
+      <div
+        class="sm:absolute sm:left-1/2 sm:h-full sm:border-l-2 sm:border-gray-300"
+      ></div>
 
       <!-- Steps -->
       <div class="flex flex-col">
         <div
           v-for="content in contents"
           :key="content.title"
-          class="flex mb-8 w-1/2"
-          :class="content.direction === 'left' ? 'self-start' : 'self-end'"
+          class="flex mb-8 w-full sm:w-1/2"
+          :class="
+            content.direction === 'left' ? 'sm:self-start' : 'sm:self-end'
+          "
         >
           <div
             :class="
               content.direction === 'left'
-                ? 'text-right mr-8'
-                : 'text-left ml-8'
+                ? 'text-center sm:text-right sm:mr-8'
+                : 'text-center sm:text-left sm:ml-8'
             "
           >
-            <UIcon :name="content.icon" class="w-8 h-8" />
-            <div class="font-semibold text-lg">{{ content.title }}</div>
-            <div class="font-light">
+            <UIcon :name="content.icon" class="w-8 h-8 mx-auto sm:mx-0" />
+            <div class="font-semibold text-lg mt-2">{{ content.title }}</div>
+            <div class="font-light mt-2 sm:mt-4">
               {{ content.description }}
             </div>
           </div>

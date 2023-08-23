@@ -51,20 +51,28 @@ const contents = [
 </script>
 
 <template>
-  <div class="flex flex-col items-center mt-32 w-3/4">
-    <span class="text-4xl font-semibold tracking-tighter"> Features </span>
-    <span class="mt-4 text-lg font-light w-3/5 text-center mb-4">
+  <div
+    class="flex flex-col items-center mt-8 sm:mt-16 lg:mt-32 w-11/12 sm:w-4/5 lg:w-3/4"
+  >
+    <span class="text-3xl sm:text-4xl font-semibold tracking-tighter">
+      Features
+    </span>
+    <span
+      class="mt-2 sm:mt-4 text-sm sm:text-base lg:text-lg font-light w-11/12 sm:w-3/5 text-center mb-2 sm:mb-4"
+    >
       Duopen is packed with features that make it the ultimate coding sandbox
       for students and teams.
     </span>
   </div>
   <div
-    class="grid grid-cols-4 mt-8 w-3/4 divide-x divide-y divide-gray-200 dark:divide-gray-600 rounded-lg border border-gray-200 dark:border-gray-700"
+    class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 w-11/12 sm:w-4/5 lg:w-3/4 divide-x divide-y divide-gray-200 dark:divide-gray-600 rounded-lg border border-gray-200 dark:border-gray-700"
   >
-    <div v-for="content in contents" class="p-4">
-      <UIcon :name="content.icon" class="w-8 h-8" />
-      <div class="mt-2 text-sm font-semibold">{{ content.title }}</div>
-      <div class="text-xs font-light mt-4">
+    <div v-for="content in contents" class="p-2 sm:p-4">
+      <UIcon :name="content.icon" class="w-6 sm:w-8 h-6 sm:h-8" />
+      <div class="mt-2 text-xs sm:text-sm font-semibold">
+        {{ content.title }}
+      </div>
+      <div class="text-xs sm:text-sm font-light mt-2">
         {{ content.description }}
       </div>
     </div>
